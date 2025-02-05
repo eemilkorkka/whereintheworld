@@ -1,0 +1,40 @@
+.country-card {
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    border-radius: 10px;
+    overflow: hidden; 
+    height: 400px;
+    width: 350px;
+}
+
+.image-container {
+    height: 50%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 350px;
+    height: 200px;
+}
+
+.info-container {
+    padding: 30px;
+}
+
+.country-name {
+    font-weight: 800;
+    font-size: 22px;
+}
+
+.country-info {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.country-info span {
+    font-weight: 300;
+}
+
+.country-card:hover {
+    cursor: pointer;
+}

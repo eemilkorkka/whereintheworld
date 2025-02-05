@@ -1,0 +1,11 @@
+.navbar {
+    padding: 25px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
+}
+
+.sign {
+    padding-left: 4%;
+    font-family: "Nunito Sans";
+    font-weight: 800;
+    color: hsl(200, 15%, 8%);
+}
