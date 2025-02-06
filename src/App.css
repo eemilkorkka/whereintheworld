@@ -18,6 +18,11 @@ body {
   justify-items: center;
 }
 
+.search-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 1370px) {
   .countries-container {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
