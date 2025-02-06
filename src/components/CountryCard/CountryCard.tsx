@@ -16,7 +16,7 @@ const CountryCard = ({ flag, countryName, population, region, capital }: Country
             </div>
             <div className="info-container">
                 <div>
-                    <p className="country-name">{countryName}</p>
+                    <h3 className="country-name">{countryName}</h3>
                 </div>
                 <div className="country-info">
                     <p>Population: <span>{population}</span></p>

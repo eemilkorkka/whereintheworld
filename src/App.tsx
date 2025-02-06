@@ -43,8 +43,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <SearchBar setSearchText={setSeachText} />
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="main">
+        <SearchBar setSearchText={setSeachText} />
         <div className="countries-container">
           {countries.map((country: any) => {
             return (

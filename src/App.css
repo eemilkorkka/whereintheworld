@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
   font-family: "Nunito Sans";
 }
 
@@ -11,7 +12,18 @@ body {
 .countries-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 100px;
+  grid-gap: 100px 50px;
   padding: 20px;
-  padding-top: 2.5%;
+  padding-top: 70px;
+  justify-items: center;
+}
+
+@media screen and (max-width: 1370px) {
+  .countries-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.main {
+  padding: 4.5%;
 }

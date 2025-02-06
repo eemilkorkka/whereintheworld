@@ -1,11 +1,22 @@
 .navbar {
-    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 5.5%;
+    padding-block: 25px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
 }
 
 .sign {
-    padding-left: 4%;
-    font-family: "Nunito Sans";
     font-weight: 800;
     color: hsl(200, 15%, 8%);
+}
+
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode-toggle .fa-moon {
+    margin-right: 10px;
 }
