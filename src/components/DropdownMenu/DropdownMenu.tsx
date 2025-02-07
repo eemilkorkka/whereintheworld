@@ -11,7 +11,7 @@ const DropdownMenu = ({ setSelectedRegion }: DropdownMenuProps) => {
 
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
-    const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+    const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
     return (
         <div className="dropdown-menu-container">

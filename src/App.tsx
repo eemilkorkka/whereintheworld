@@ -11,7 +11,7 @@ function App() {
     name: string,
     population: number,
     region: string,
-    capital: string,
+    capital?: string[],
   }
 
   const [countries, setCountries] = useState<Country[]>([]);
@@ -19,18 +19,21 @@ function App() {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [selectedRegion, setSelectedRegion] = useState<string>("");
 
-  useEffect(() => { 
+  useEffect(() => {
+    setCountries([]);
+    setNotFound(false); 
     searchText == "" ? getCountries() : searchForCountry();
-    setNotFound(false);
   }, [searchText, selectedRegion]);
 
   const getCountries = async () => {
     try {
-      if (selectedRegion) {
+      if (selectedRegion && selectedRegion !== 'All') {
+
         const response = await fetch(`https://restcountries.com/v3.1/region/${selectedRegion}`);
         const data = await response.json();
+        
         setCountries(data);
-      } else {
+      } else if (selectedRegion === 'All' || selectedRegion === '') {
         const response = await fetch('https://restcountries.com/v3.1/all');
         const data = await response.json();
         setCountries(data);
@@ -49,22 +52,28 @@ function App() {
         setNotFound(true);
         return
       }
+      
+      console.log(response, selectedRegion);
 
       const data = await response.json();
 
-      const filteredCountries = selectedRegion
+      const filteredCountries = selectedRegion && selectedRegion !== 'All'
         ? data.filter((country: any) => country.region === selectedRegion)
-        : data
+        : data;
 
-      if (filteredCountries.length === 0) {
+      if (filteredCountries.length == 0) {
         setNotFound(true)
       } else {
-        setCountries(filteredCountries)
+        setCountries(filteredCountries);
         setNotFound(false)
       }
     } catch (error) {
       console.log("An error occurred whilst trying to search for a country: " + error);
     }
+  }
+
+  const formatCapitals = (capitals: string[]): string => {
+    return capitals.join(', ');
   }
 
   return (
@@ -87,7 +96,7 @@ function App() {
                 countryName={country.name.common}
                 population={country.population}
                 region={country.region}
-                capital={country.capital}
+                capital={country.capital ? (country.capital.length > 1 ? formatCapitals(country.capital) : country.capital[0]) : 'N/A'}
               />
             )
           })}
