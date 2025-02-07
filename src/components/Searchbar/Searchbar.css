@@ -1,18 +1,18 @@
 .search-container {
-    display: flex;
-    align-items: center;
+    position: relative;
 }
 
 .search-icon {
     position: absolute;
-    margin-left: 15px;
+    left: 20px;
+    top: 20px;
     color: #aaa;
 }
 
 .search-input {
-    width: 500px;
+    width: 100%;
     padding: 20px;
-    padding-left: 50px;
+    padding-left: 60px;
     border-radius: 4px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;

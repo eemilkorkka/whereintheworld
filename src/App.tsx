@@ -3,7 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import SearchBar from './components/Searchbar/Searchbar'
 import CountryCard from './components/CountryCard/CountryCard';
-import DropdownMenu from './components/DropdownMenu.tsx/DropdownMenu';
+import DropdownMenu from './components/DropdownMenu/DropdownMenu';
 
 function App() {
 
@@ -17,17 +17,24 @@ function App() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [searchText, setSeachText] = useState<string>('');
   const [notFound, setNotFound] = useState<boolean>(false);
+  const [selectedRegion, setSelectedRegion] = useState<string>('');
 
   useEffect(() => { 
     searchText == "" ? getCountries() : searchForCountry();
     setNotFound(false);
-  }, [searchText]);
+  }, [searchText, selectedRegion]);
 
   const getCountries = async () => {
     try {
-      const response = await fetch('https://restcountries.com/v3.1/all');
-      const data = await response.json();
-      setCountries(data);
+      if (selectedRegion) {
+        const response = await fetch(`https://restcountries.com/v3.1/region/${selectedRegion}`);
+        const data = await response.json();
+        setCountries(data);
+      } else {
+        const response = await fetch('https://restcountries.com/v3.1/all');
+        const data = await response.json();
+        setCountries(data);
+      }
     } catch (error) {
       console.log("An error occured when trying to fetch countries: " + error);
     }
@@ -55,9 +62,9 @@ function App() {
     <>
       <Navbar />
       <div className="main">
-        <div className="search-container">
+        <div className="search_region-container">
           <SearchBar setSearchText={setSeachText} />
-          <DropdownMenu />
+          <DropdownMenu setSelectedRegion={setSelectedRegion} />
         </div>
         <div style={{ display: notFound ? 'block' : 'none', textAlign: 'center', marginTop: '15%' }}>
           {notFound && <h2>No results found!</h2>}

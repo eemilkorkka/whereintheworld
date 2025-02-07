@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 5.5%;
+    padding-inline: 4.5%;
     padding-block: 25px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
 }
@@ -19,4 +19,9 @@
 
 .dark-mode-toggle .fa-moon {
     margin-right: 10px;
+}
+
+.dark-mode-toggle span {
+    font-weight: 600;
+    font-size: 18px;
 }
