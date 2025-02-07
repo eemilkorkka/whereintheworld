@@ -11,10 +11,10 @@ body {
 
 .countries-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 0px));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 80px;
   padding-top: 70px;
   grid-row-gap: 100px; 
-  justify-content: space-between;
 }
 
 .search_region-container {
@@ -26,15 +26,17 @@ body {
   padding: 4.5%;
 }
 
-@media (max-width: 650px) {
-  .countries-container {
-    justify-content: center;
-  }
-}
-
 @media (max-width: 800px) {
   .search_region-container {
       flex-direction: column;
       gap: 40px;
+  }
+}
+
+@media (max-width: 682px) {
+  .countries-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
 }

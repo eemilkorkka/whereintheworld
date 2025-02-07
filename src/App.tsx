@@ -17,7 +17,7 @@ function App() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [searchText, setSeachText] = useState<string>('');
   const [notFound, setNotFound] = useState<boolean>(false);
-  const [selectedRegion, setSelectedRegion] = useState<string>('');
+  const [selectedRegion, setSelectedRegion] = useState<string>("");
 
   useEffect(() => { 
     searchText == "" ? getCountries() : searchForCountry();
@@ -51,8 +51,17 @@ function App() {
       }
 
       const data = await response.json();
-      setCountries(data);
-      setNotFound(false);
+
+      const filteredCountries = selectedRegion
+        ? data.filter((country: any) => country.region === selectedRegion)
+        : data
+
+      if (filteredCountries.length === 0) {
+        setNotFound(true)
+      } else {
+        setCountries(filteredCountries)
+        setNotFound(false)
+      }
     } catch (error) {
       console.log("An error occurred whilst trying to search for a country: " + error);
     }

@@ -1,5 +1,6 @@
 .country-card {
-    width: 290px;
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
     background-color: hsl(0, 0%, 100%);
@@ -7,7 +8,13 @@
 }
 
 .info-container {
-    padding: 20px;
+    height: 100%;
+    padding: 25px;
+}
+
+.country-name {
+    font-size: 1.5rem;
+    margin-top: 5px;
 }
 
 .country-info {
@@ -16,6 +23,7 @@
 
 .country-info p {
     font-weight: 600;
+    margin-top: 10px;
 }
 
 .country-info span {

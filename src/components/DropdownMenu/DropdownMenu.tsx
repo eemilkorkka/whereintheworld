@@ -19,19 +19,17 @@ const DropdownMenu = ({ setSelectedRegion }: DropdownMenuProps) => {
                 <span className="dropdown-button">Filter by Region</span>
                 <FontAwesomeIcon className="dropdown-icon" icon={faAngleDown} size="sm" />
             </button>
-            {dropdownOpen && (
-                <div className="dropdown-menu">
-                    {regions.map(region => (
-                        <button 
-                            key={region} 
-                            className="dropdown-menu-item" 
-                            onClick={() => {setSelectedRegion(region); setDropdownOpen(false)}}
+            <div className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
+                {regions.map(region => (
+                    <button
+                        key={region}
+                        className="dropdown-menu-item"
+                        onClick={() => {setSelectedRegion(region); setDropdownOpen(false)}} 
                     >
-                            {region}
-                        </button>
-                    ))}
-                </div>
-            )}
+                        {region}
+                    </button>
+                ))}
+            </div>
         </div>
     )
 }
