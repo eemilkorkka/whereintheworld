@@ -1,4 +1,5 @@
 .country-card {
+    width: 290px;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -13,7 +14,6 @@
 }
 
 .country-name {
-    font-size: 1.5rem;
     margin-top: 5px;
 }
 

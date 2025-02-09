@@ -1,3 +1,4 @@
+import { Country } from "../../utils/utils";
 import "./CountryCard.css"; 
 
 interface CountryCardProps {
@@ -5,12 +6,13 @@ interface CountryCardProps {
     countryName: string,
     population: number,
     region: string,
-    capital: string
+    capital: string,
+    onClick: (country: string) => void
 }
 
-const CountryCard = ({ flag, countryName, population, region, capital }: CountryCardProps) => {
+const CountryCard = ({ flag, countryName, population, region, capital, onClick }: CountryCardProps) => {
     return (
-        <div className="country-card">
+        <div className="country-card" onClick={() => onClick(countryName)}>
             <div className="image-container">
                 <img alt={countryName} src={flag} />
             </div>
