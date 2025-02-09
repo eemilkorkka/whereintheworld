@@ -20,6 +20,7 @@ const App = () => {
         setCountries(data);
       } catch (error) {
         console.log("An error occurred whilst trying to fetch data.");
+        return "N/A";
       }
     };
 
@@ -35,9 +36,18 @@ const App = () => {
             key={country.name.common}
             path={`/${country.name.common}`}
             element={
-              <CountryView 
-                name={country.name.common} 
-                
+              <CountryView
+                flag={country.flags.svg} 
+                name={country.name.common}
+                nativeName={country.name.nativeName}
+                population={country.population}
+                region={country.region}
+                subRegion={country.subregion} 
+                capital={country.capital}
+                topLevelDomain={country.tld}
+                currencies={country.currencies}
+                languages={country.languages}
+                borderingCountries={country.borders}
               />
             }
           />

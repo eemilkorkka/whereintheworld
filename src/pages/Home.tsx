@@ -1,9 +1,10 @@
+import "./Home.css";
 import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/Searchbar/Searchbar";
 import DropdownMenu from "../components/DropdownMenu/DropdownMenu";
 import CountryCard from "../components/CountryCard/CountryCard";
 import { useState, useEffect } from "react";
-import { formatCapitals, Country } from "../utils/utils";
+import { Country } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -49,8 +50,6 @@ const Home = () => {
             return
           }
           
-          console.log(response, selectedRegion);
-    
           const data = await response.json();
     
           const filteredCountries = selectedRegion && selectedRegion !== 'All'
@@ -73,11 +72,11 @@ const Home = () => {
             <Navbar />
             <div className="main">
                 <div className="search_region-container">
-                <SearchBar setSearchText={setSeachText} />
-                <DropdownMenu setSelectedRegion={setSelectedRegion} />
+                    <SearchBar setSearchText={setSeachText} />
+                    <DropdownMenu setSelectedRegion={setSelectedRegion} />
                 </div>
                 <div style={{ display: notFound ? 'block' : 'none', textAlign: 'center', marginTop: '15%' }}>
-                {notFound && <h2>No results found!</h2>}
+                    {notFound && <h2>No results found!</h2>}
                 </div>
                 <div className="countries-container">
                 {countries.map((country: any) => {
@@ -88,7 +87,7 @@ const Home = () => {
                             countryName={country.name.common}
                             population={country.population}
                             region={country.region}
-                            capital={country.capital ? (country.capital.length > 1 ? formatCapitals(country.capital) : country.capital[0]) : 'N/A'}
+                            capital={country.capital ? (country.capital.length > 1 ? country.capital?.join(", ") : country.capital[0]) : 'N/A'}
                             onClick={() => navigate("/" + country.name.common)}
                         />
                     )

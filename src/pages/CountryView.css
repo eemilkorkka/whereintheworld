@@ -1,0 +1,88 @@
+.main-countryview {
+    display: flex;
+    flex-direction: column;
+    padding: 4.5%;
+}
+
+.return-button-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.return-button-container button {
+    width: 130px;
+    padding: 8px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.arrow-icon {
+    position: absolute;
+    left: 15px;
+}
+
+.country-details-container {
+    display: flex;
+    margin-top: 100px;
+}
+
+.flag-container img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+}
+
+.flag-container {
+    width: 80%;
+}
+
+.information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px;
+}
+
+.information {
+    display: flex;
+    gap: 150px;
+}
+
+.information p, .neighbouring-countries-container p {
+    font-weight: 600;
+}
+
+.information span {
+    font-weight: 300;
+}
+
+.return-button-container button:hover {
+    cursor: pointer;
+}
+
+.left-info, .right-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.neighbouring-countries-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.neighbouring-countries-container button {
+    padding: 3px;
+    width: 100px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
+    border-radius: 4px;
+    border: none;
+}
