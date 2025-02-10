@@ -1,4 +1,3 @@
-import { Country } from "../../utils/utils";
 import "./CountryCard.css"; 
 
 interface CountryCardProps {
