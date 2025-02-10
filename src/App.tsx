@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import CountryView from './pages/CountryView'
 import { useState, useEffect } from 'react'
@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="App" data-theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home setTheme={setTheme} currentTheme={theme} />} />
           {countries.map((country: any) => (
@@ -58,7 +58,7 @@ const App = () => {
             />
           ))}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
