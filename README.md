@@ -2,6 +2,9 @@
 
 A webpage made with React ⚛️ with all the countries in the world and some information about them! This project idea is from [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
 
+## Live Preview 🌐
+[Live preview](https://eemilkorkka.github.io/whereintheworld)
+
 ## Screenshots 📸
 
 Homepage Light Mode 
