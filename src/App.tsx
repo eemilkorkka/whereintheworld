@@ -37,6 +37,7 @@ const App = () => {
             path={`/${country.name.common}`}
             element={
               <CountryView
+                key={country.name.common}
                 flag={country.flags.svg} 
                 name={country.name.common}
                 nativeName={country.name.nativeName}

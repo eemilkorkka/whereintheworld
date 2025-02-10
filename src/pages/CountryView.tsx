@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface CountryDetails {
     flag: string;
@@ -16,7 +16,7 @@ interface CountryDetails {
     topLevelDomain: string[];
     currencies: string;
     languages: { [key: string]: string };
-    borderingCountries: string[];
+    borderingCountries?: string[];
 }
 
 const CountryView = ({ 
@@ -34,14 +34,36 @@ const CountryView = ({
 }: CountryDetails) => {
 
     const navigate = useNavigate();
+    const [borderCountryNames, setBorderCountryNames] = useState<string[]>([]);
+
+    useEffect(() => {
+        const getFullName = async () => {
+          try {
+            const names = await Promise.all(
+              borderingCountries?.map(async (country) => {
+                const response = await fetch(`https://restcountries.com/v3.1/alpha?codes=${country}`);
+                const data = await response.json();
+                return data[0].name.common;
+              }) || []
+            );
+            setBorderCountryNames(names);
+          } catch (error) {
+            console.log("An error occurred whilst trying to fetch country names");
+          }
+        }
+    
+        getFullName();
+    }, [borderingCountries]);
 
     return (
         <>
             <Navbar />
             <div className="main-countryview">
                 <div className="return-button-container">
-                    <FontAwesomeIcon icon={faArrowLeftLong} className="arrow-icon" />
-                    <button onClick={() => navigate("/")}>Back</button>
+                    <button onClick={() => navigate("/")}>
+                        <FontAwesomeIcon icon={faArrowLeftLong} className="arrow-icon" />
+                        <span>Back</span>
+                    </button>
                 </div>
                 <div className="country-details-container">
                     <div className="flag-container">
@@ -63,11 +85,12 @@ const CountryView = ({
                                 <p>Languages: <span>{Object.values(languages).join(", ")}</span></p>
                             </div>
                         </div>
-                        <div className="neighbouring-countries-container">
+                        <div className="bordering-countries-container">
                             <p>Border Countries:</p>
-                            {borderingCountries.map((country: any) => (
-                                <button>{country}</button>
+                            {borderCountryNames?.map((country: any) => (
+                                <button onClick={() => navigate(`/${country}`)}>{country}</button>
                             ))}
+                            {!borderingCountries && <span>N/A</span>}
                         </div>
                     </div>
                 </div>
