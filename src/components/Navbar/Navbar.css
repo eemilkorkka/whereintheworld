@@ -9,7 +9,6 @@
 
 .sign {
     font-weight: 800;
-    color: hsl(200, 15%, 8%);
 }
 
 .dark-mode-toggle {
@@ -17,7 +16,11 @@
     align-items: center;
 }
 
-.dark-mode-toggle .fa-moon {
+.dark-mode-toggle:hover {
+    cursor: pointer;
+}
+
+.dark-mode-toggle .fa-moon, .dark-mode-toggle .fa-sun {
     margin-right: 10px;
 }
 

@@ -9,7 +9,6 @@
     padding: 20px;
     border-radius: 4px;
     padding-right: 80px;
-    background-color: hsl(0, 0%, 100%);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px;
     font-size: 14px;
 }
@@ -54,11 +53,9 @@
     border: none;
     padding: 10px;
     padding-left: 20px;
-    background-color: hsl(0, 0%, 100%);
     text-align: left;
 }
 
 .dropdown-menu-item:hover {
-    background-color: hsl(0, 0%, 95%);
     cursor: pointer;
 }

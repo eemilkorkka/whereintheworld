@@ -7,7 +7,12 @@ import { useState, useEffect } from "react";
 import { Country } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+interface HomeProps {
+  setTheme: (theme: string) => void;
+  currentTheme: string;
+}
+
+const Home = ({ setTheme, currentTheme }: HomeProps) => {
     
     const [countries, setCountries] = useState<Country[]>([]);
     const [searchText, setSeachText] = useState<string>('');
@@ -69,7 +74,7 @@ const Home = () => {
     
     return (
         <>
-            <Navbar />
+            <Navbar setTheme={setTheme} currentTheme={currentTheme} />
             <div className="main">
                 <div className="search_region-container">
                     <SearchBar setSearchText={setSeachText} />

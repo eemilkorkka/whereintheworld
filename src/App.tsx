@@ -8,6 +8,7 @@ import { Country } from "./utils/utils";
 const App = () => {
 
   const [countries, setCountries] = useState<Country[]>([]);
+  const [theme, setTheme] = useState<string>("");
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -28,33 +29,37 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {countries.map((country: any) => (
-          <Route
-            key={country.name.common}
-            path={`/${country.name.common}`}
-            element={
-              <CountryView
-                key={country.name.common}
-                flag={country.flags.svg} 
-                name={country.name.common}
-                nativeName={country.name.nativeName}
-                population={country.population}
-                region={country.region}
-                subRegion={country.subregion} 
-                capital={country.capital}
-                topLevelDomain={country.tld}
-                currencies={country.currencies}
-                languages={country.languages}
-                borderingCountries={country.borders}
-              />
-            }
-          />
-        ))}
-      </Routes>
-    </BrowserRouter>
+    <div className="App" data-theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home setTheme={setTheme} currentTheme={theme} />} />
+          {countries.map((country: any) => (
+            <Route
+              key={country.name.common}
+              path={`/${country.name.common}`}
+              element={
+                <CountryView
+                  key={country.name.common}
+                  flag={country.flags.svg} 
+                  name={country.name.common}
+                  nativeName={country.name.nativeName}
+                  population={country.population}
+                  region={country.region}
+                  subRegion={country.subregion} 
+                  capital={country.capital}
+                  topLevelDomain={country.tld}
+                  currencies={country.currencies}
+                  languages={country.languages}
+                  borderingCountries={country.borders}
+                  setTheme={setTheme}
+                  currentTheme={theme}
+                />
+              }
+            />
+          ))}
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

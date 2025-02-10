@@ -8,7 +8,7 @@
     position: absolute;
     left: 20px;
     top: 20px;
-    color: #aaa;
+    color: var(--text-color);
 }
 
 .search-input {

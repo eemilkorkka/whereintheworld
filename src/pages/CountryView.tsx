@@ -17,6 +17,8 @@ interface CountryDetails {
     currencies: string;
     languages: { [key: string]: string };
     borderingCountries?: string[];
+    setTheme: (theme: string) => void;
+    currentTheme: string;
 }
 
 const CountryView = ({ 
@@ -30,7 +32,9 @@ const CountryView = ({
     topLevelDomain, 
     currencies, 
     languages, 
-    borderingCountries 
+    borderingCountries,
+    setTheme,
+    currentTheme 
 }: CountryDetails) => {
 
     const navigate = useNavigate();
@@ -57,7 +61,7 @@ const CountryView = ({
 
     return (
         <>
-            <Navbar />
+            <Navbar setTheme={setTheme} currentTheme={currentTheme} />
             <div className="main-countryview">
                 <div className="return-button-container">
                     <button onClick={() => navigate("/")}>

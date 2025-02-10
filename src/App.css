@@ -5,6 +5,21 @@
   font-family: "Nunito Sans";
 }
 
-body {
-  background-color: hsl(0, 0%, 98%);
+.App {
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+.country-card, button {
+  background-color: var(--foreground-color);
+  color: var(--text-color);
+}
+
+p, span, h2, h3, h1 {
+  color: var(--text-color);
+}
+
+input {
+  color: var(--text-color);
+  background-color: var(--foreground-color);
 }
