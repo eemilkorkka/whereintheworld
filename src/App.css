@@ -23,3 +23,7 @@ input {
   color: var(--text-color);
   background-color: var(--foreground-color);
 }
+
+.navbar {
+  background-color: var(--foreground-color);
+}
