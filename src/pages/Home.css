@@ -1,8 +1,8 @@
 .countries-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 80px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 50px;
     padding-top: 70px;
     grid-row-gap: 100px; 
 }
@@ -14,7 +14,7 @@
   
 .main {
     min-height: 100vh;
-    padding: 4.5%;
+    padding: 3%;
 }
   
 @media (max-width: 860px) {

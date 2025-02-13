@@ -1,5 +1,5 @@
 .country-card {
-    width: 290px;
+    min-width: 290px;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
