@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch('https://restcountries.com/v3.1/all');
+        const response = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,region,subregion,capital,tld,currencies,languages,borders');
         const data = await response.json();
 
         console.log(data);
@@ -33,7 +33,7 @@ const App = () => {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Home setTheme={setTheme} currentTheme={theme} />} />
-          {countries.map((country: any) => (
+          {countries.map((country: Country) => (
             <Route
               key={country.name.common}
               path={`/${country.name.common}`}
@@ -42,14 +42,14 @@ const App = () => {
                   key={country.name.common}
                   flag={country.flags.svg} 
                   name={country.name.common}
-                  nativeName={country.name.nativeName}
+                  nativeName={country.name.nativeName || {}}
                   population={country.population}
                   region={country.region}
                   subRegion={country.subregion} 
                   capital={country.capital}
-                  topLevelDomain={country.tld}
-                  currencies={country.currencies}
-                  languages={country.languages}
+                  topLevelDomain={country.tld || []}
+                  currencies={country.currencies || {}}
+                  languages={country.languages || {}}
                   borderingCountries={country.borders}
                   setTheme={setTheme}
                   currentTheme={theme}

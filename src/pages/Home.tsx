@@ -36,7 +36,7 @@ const Home = ({ setTheme, currentTheme }: HomeProps) => {
             
             setCountries(data);
           } else if (selectedRegion === 'All' || selectedRegion === '') {
-            const response = await fetch('https://restcountries.com/v3.1/all');
+            const response = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,region,subregion,capital,tld,currencies,languages,borders');
             const data = await response.json();
             setCountries(data);
           }
@@ -58,7 +58,7 @@ const Home = ({ setTheme, currentTheme }: HomeProps) => {
           const data = await response.json();
     
           const filteredCountries = selectedRegion && selectedRegion !== 'All'
-            ? data.filter((country: any) => country.region === selectedRegion)
+            ? data.filter((country: Country) => country.region === selectedRegion)
             : data;
     
           if (filteredCountries.length == 0) {

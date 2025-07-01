@@ -14,27 +14,27 @@ interface CountryDetails {
     subRegion?: string;
     capital?: string[];
     topLevelDomain: string[];
-    currencies: string;
+    currencies: { [key: string]: { name: string; symbol: string; }; }
     languages: { [key: string]: string };
     borderingCountries?: string[];
     setTheme: (theme: string) => void;
     currentTheme: string;
 }
 
-const CountryView = ({ 
-    flag, 
+const CountryView = ({
+    flag,
     name,
-    nativeName, 
-    population, 
-    region, 
-    subRegion, 
-    capital, 
-    topLevelDomain, 
-    currencies, 
-    languages, 
+    nativeName,
+    population,
+    region,
+    subRegion,
+    capital,
+    topLevelDomain,
+    currencies,
+    languages,
     borderingCountries,
     setTheme,
-    currentTheme 
+    currentTheme
 }: CountryDetails) => {
 
     const navigate = useNavigate();
@@ -42,22 +42,24 @@ const CountryView = ({
 
     useEffect(() => {
         const getFullName = async () => {
-          try {
-            const names = await Promise.all(
-              borderingCountries?.map(async (country) => {
-                const response = await fetch(`https://restcountries.com/v3.1/alpha?codes=${country}`);
-                const data = await response.json();
-                return data[0].name.common;
-              }) || []
-            );
-            setBorderCountryNames(names);
-          } catch (error) {
-            console.log("An error occurred whilst trying to fetch country names");
-          }
+            try {
+                const names = await Promise.all(
+                    borderingCountries?.map(async (country) => {
+                        const response = await fetch(`https://restcountries.com/v3.1/alpha?codes=${country}`);
+                        const data = await response.json();
+                        return data[0].name.common;
+                    }) || []
+                );
+                setBorderCountryNames(names);
+            } catch (error) {
+                console.log("An error occurred whilst trying to fetch country names");
+            }
         }
-    
+
         getFullName();
     }, [borderingCountries]);
+
+    console.log(currencies);
 
     return (
         <>
@@ -85,7 +87,11 @@ const CountryView = ({
                             <div className="right-info">
                                 <p>Capital: <span>{capital ? capital?.join(", ") : "N/A"}</span></p>
                                 <p>Top Level Domain: <span>{topLevelDomain.join(", ")}</span></p>
-                                <p>Currencies: <span>{Object.keys(currencies)}</span></p>
+                                <p>Currencies: <span>{currencies && typeof currencies === 'object'
+                                    ? Object.values(currencies)
+                                        .map((currency: any) => currency.name)
+                                        .join(', ')
+                                    : 'N/A'}</span></p>
                                 <p>Languages: <span>{Object.values(languages).join(", ")}</span></p>
                             </div>
                         </div>
